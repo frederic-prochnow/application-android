@@ -44,7 +44,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="13dp"
         android:id="@+id/message"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@color/color_changed"
         android:textAlignment="center"
         android:textSize="30sp" />
 

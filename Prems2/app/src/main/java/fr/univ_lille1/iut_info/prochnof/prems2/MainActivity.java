@@ -1,5 +1,6 @@
 package fr.univ_lille1.iut_info.prochnof.prems2;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarActivity;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         String msg;
         tvNom = (TextView) findViewById(R.id.nom);
         tvMessage = (TextView) findViewById(R.id.message);
+        tvMessage.setTextColor(Color.BLUE);
         msg ="Bienvenue " + tvNom.getText() + "!";
         tvMessage.setText(msg);
     }
