@@ -39,22 +39,21 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState){
-        super.onSaveInstanceState(outState,outPersistentState);
-    }
-
     public void onSaveInstanceState(Bundle outState){
+        TextView tvCumul = (TextView) findViewById(R.id.cumul);
+        TextView tvInverse = (TextView) findViewById(R.id.inverse);
+        outState.putString("cumul",tvCumul.getText().toString());
+        outState.putString("inverse",tvInverse.getText().toString());
+
         super.onSaveInstanceState(outState);
     }
 
-    public void onRestoreInstancesState(Bundle saveInstanceState,PersistableBundle persistentState){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            super.onRestoreInstanceState(saveInstanceState,persistentState);
-        }
-    }
-
     public void onRestoreInstanceState(Bundle saveInstanceState){
-        super.onRestoreInstanceState(saveInstanceState);
+            super.onRestoreInstanceState(saveInstanceState);
+        TextView tvCumul = (TextView) findViewById(R.id.cumul);
+        TextView tvInverse = (TextView) findViewById(R.id.inverse);
+        tvCumul.setText(saveInstanceState.getString("cumul"));
+        tvInverse.setText(saveInstanceState.getString("inverse"));
     }
 
     public void onRestart(){
@@ -62,12 +61,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doGo(View view){
-        TextView tvCumul;
-        tvCumul = (TextView) findViewById(R.id.cumul);
-        TextView tvInverse;
-        tvInverse = (TextView) findViewById(R.id.inverse);
-        TextView tvIncrement;
-        tvIncrement = (TextView) findViewById(R.id.increment);
+        TextView tvCumul = (TextView) findViewById(R.id.cumul);
+        TextView tvInverse = (TextView) findViewById(R.id.inverse);
+        TextView tvIncrement  = (TextView) findViewById(R.id.increment);
         valeur += Integer.parseInt(""+tvIncrement.getText());;
         double inv = 1.0/valeur;
         tvCumul.setText(""+valeur);
