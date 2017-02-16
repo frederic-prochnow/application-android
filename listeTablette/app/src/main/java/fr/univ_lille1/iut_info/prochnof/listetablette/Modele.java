@@ -9,18 +9,18 @@ import java.util.HashMap;
  * Created by frederic prochnow on 02/02/17.
  */
 
-public class Modele extends ListActivity{
+public class Modele{
 
     HashMap<Integer,String> map;
     String[] listeTablette;
     String[] listeEtudiant;
 
-    Modele(){
+    Modele(String[] listeTablette,String[] listeEtudiant){
         map = new HashMap<>();
-        listeTablette = getResources().getStringArray(R.array.tablets);
-        listeEtudiant = getResources().getStringArray(R.array.students);
+        this.listeTablette = listeTablette;
+        this.listeEtudiant = listeEtudiant;
         for(int i= 0; i<listeTablette.length; i++){
-            map.put(listeTablette[i],listeEtudiant[0]);
+            map.put(i,listeEtudiant[0]);
         }
     }
 
@@ -29,7 +29,7 @@ public class Modele extends ListActivity{
         listeEtudiant = bundle.getStringArray("listeEtudiant");
         map = new HashMap<>();
         for(int i= 0; i<listeTablette.length; i++){
-            map.put(listeTablette[i],listeEtudiant[0]);
+            map.put(i,listeEtudiant[0]);
         }
     }
 
@@ -54,6 +54,10 @@ public class Modele extends ListActivity{
         }
     }
 
+    public String[] getAllStudents() {
+        return listeEtudiant;
+    }
+/*
     public void save(Bundle outState){
         super.onSaveInstanceState(outState);
         outState.putStringArray("listeTablette",listeTablette);
@@ -62,5 +66,5 @@ public class Modele extends ListActivity{
         for(int i=0; i< map.size(); i++){
             outState.putString(""+i,map.get(i));
         }
-    }
+    }*/
 }
